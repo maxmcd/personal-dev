@@ -1,0 +1,29 @@
+{
+  "builders": [
+    {
+      "type": "googlecompute",
+      "project_id": "media-9x16",
+      "source_image_family": "ubuntu-1804-lts",
+      "ssh_username": "maxm",
+      "zone": "us-east4-a"
+    }
+  ],
+  "provisioners":  [
+  {
+    "type": "shell",
+    "inline": [
+      "sudo mkdir /ops",
+      "sudo chmod 777 /ops"
+    ]
+  },
+  {
+    "type": "file",
+    "source": "./shared",
+    "destination": "/ops"
+  },
+  {
+    "type": "shell",
+    "script": "./shared/setup.sh"
+  }]
+
+}
