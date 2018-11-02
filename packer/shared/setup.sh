@@ -1,16 +1,13 @@
 #!/bin/bash
 
+ls -lah /home/maxm/.ssh
+
 set -e
 
 # Disable interactive apt prompts
 export DEBIAN_FRONTEND=noninteractive
 
 cd /ops
-
-VAULTVERSION=0.10.3
-VAULTDOWNLOAD=https://releases.hashicorp.com/vault/${VAULTVERSION}/vault_${VAULTVERSION}_linux_amd64.zip
-VAULTCONFIGDIR=/etc/vault.d
-VAULTDIR=/opt/vault
 
 # Dependencies
 echo "Hashimoto says sleep!"
@@ -23,12 +20,38 @@ sudo apt-get install -y \
   tree \
   redis-tools \
   jq \
+  gnupg2 \
   curl \
   tmux \
   git \
   build-essential \
   wget \
+  aria2 \
+  cmake \
+  python \
+  python3-dev \
+  ruby \
   tree
+
+cp /ops/shared/bash_profile.bash ~/.bash_profile
+
+# /home/maxm
+cd ~/
+
+# Install vim-sublime
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+curl https://raw.githubusercontent.com/grigio/vim-sublime/master/vimrc > $HOME/.vimrc
+
+# https://github.com/VundleVim/Vundle.vim/issues/511#issuecomment-134251209
+echo | echo | vim +PluginInstall +qall &>/dev/null
+
+cd ~/.vim/bundle/YouCompleteMe
+python3 install.py
+
+git clone https://github.com/flazz/vim-colorschemes
+mv vim-colorschemes/colors/ .vim
+rm -rf vim-colorschemes
+
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
@@ -41,15 +64,29 @@ sudo apt-get update
 sudo apt-get install -y golang-1.10-go
 
 curl https://sh.rustup.rs -sSf | sh -s -- -y
-cp /ops/shared/bash_profile.bash ~/.bash_profile
 
-cd ~/
+# allow me to ssh into myself
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 wget -O .git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash 
 wget -O .git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 
 mkdir ~/go
 mkdir -p ~/go/src/github.com/maxmcd
+mkdir -p ~/go/src/github.com/voltusdev
 mkdir ~/go/bin
 
 cd ~ && git clone https://github.com/michaeldfallen/git-radar .git-radar
+
+wget https://github.com/sharkdp/bat/releases/download/v0.8.0/bat_0.8.0_amd64.deb
+sudo dpkg -i bat_0.8.0_amd64.deb
+rm bat_0.8.0_amd64.deb
+
+
+# Install ruby
+# gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+# \curl -sSL https://get.rvm.io | bash -s stable
+# source /home/maxm/.rvm/scripts/rvm
+# rvm install 2.6
+
+

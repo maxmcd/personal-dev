@@ -1,0 +1,9 @@
+#! /bin/bash
+set -e
+docker-machine create --driver amazonec2 \
+    --amazonec2-instance-type=c3.xlarge\
+    --amazonec2-block-duration-minutes=360 \
+    --amazonec2-open-port=8080 \
+    --amazonec2-request-spot-instance \
+    --amazonec2-region=us-east-1 \
+    --amazonec2-spot-price=0.137 max

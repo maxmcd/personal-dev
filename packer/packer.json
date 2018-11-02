@@ -2,6 +2,7 @@
   "builders": [
     {
       "type": "googlecompute",
+      "machine_type": "n1-highcpu-4",
       "project_id": "media-9x16",
       "source_image_family": "ubuntu-1804-lts",
       "ssh_username": "maxm",
@@ -22,8 +23,27 @@
     "destination": "/ops"
   },
   {
+    "type": "file",
+    "source": "/Users/maxm/.ssh",
+    "destination": "/home/maxm/"
+  },
+  {
+    "type": "file",
+    "source": "/Users/maxm/.aws",
+    "destination": "/home/maxm/"
+  },
+  {
+    "type": "file",
+    "source": "/Users/maxm/.bash_history",
+    "destination": "/home/maxm/"
+  },
+  {
     "type": "shell",
     "script": "./shared/setup.sh"
+  },
+  {
+    "type": "shell",
+    "script": "./shared/git-load.sh"
   }]
 
 }

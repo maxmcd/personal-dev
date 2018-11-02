@@ -26,8 +26,8 @@ export GITHUB=$GOPATH/src/github.com/
 export MX=$GOPATH/src/github.com/maxmcd/
 
 POWDER_BLUE=$(tput setaf 153)
-WEIRD_BLUE=$(tput setaf 30)
-WHITE=$(tput setaf 7)
+WEIRD_BLUE=$(tput setaf 31)
+WHITE=$(tput setaf 15)
 NPROC=$(nproc)
 PS1="\[${WEIRD_BLUE}\]\u $NPROC 👻 :\w\[${POWDER_BLUE}\]\$(git-radar --bash --fetch)\[${WEIRD_BLUE}\] \n$ \[${WHITE}\]"
 
