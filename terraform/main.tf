@@ -4,6 +4,9 @@ provider "google" {
   region      = "us-east4"
 }
 
+resource "google_compute_address" "me" {
+  name = "dev-instance"
+}
 
 resource "google_compute_instance" "me" {
   name         = "dev-instance"
@@ -19,7 +22,7 @@ resource "google_compute_instance" "me" {
   network_interface {
     network = "default"
     access_config {
-      // Ephemeral IP
+      nat_ip = "${google_compute_address.me.address}"
     }
   }
 }
