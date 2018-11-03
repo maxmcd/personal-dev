@@ -81,7 +81,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 curl -fsSL get.docker.com -o get-docker.sh
 sh get-docker.sh
 sudo gpasswd -a $USER docker
-
+rm ./get-docker.sh
 
 sudo add-apt-repository ppa:gophers/archive
 sudo apt-get update
