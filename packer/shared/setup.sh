@@ -50,6 +50,7 @@ echo | echo | vim +PluginInstall +qall &>/dev/null
 
 cd ~/.vim/bundle/YouCompleteMe
 python3 install.py
+cd ~
 
 git clone https://github.com/flazz/vim-colorschemes
 mv vim-colorschemes/colors/ .vim
@@ -100,4 +101,5 @@ rm bat_0.8.0_amd64.deb
 # source /home/maxm/.rvm/scripts/rvm
 # rvm install 2.6
 
-
+# gcloud auth login
+# gcloud auth application-default login

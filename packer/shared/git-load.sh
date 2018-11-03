@@ -104,7 +104,6 @@ git clone git@github.com:maxmcd/rustcoin.git
 git clone git@github.com:maxmcd/voltus.git
 git clone git@github.com:maxmcd/fazer-r.git
 git clone git@github.com:maxmcd/collab.git
-git clone git@github.com:maxmcd/voltus-autoloader.git
 git clone git@github.com:maxmcd/dcdn.git
 git clone git@github.com:maxmcd/react-native-ijkplayer.git
 git clone git@github.com:maxmcd/react-native-webrtc.git
@@ -112,13 +111,11 @@ git clone git@github.com:maxmcd/v8worker2.git
 git clone git@github.com:maxmcd/blackbird.git
 git clone git@github.com:maxmcd/react-native-wowza-gocoder.git
 git clone git@github.com:maxmcd/react-native-onesignal.git
-git clone git@github.com:maxmcd/tarocoin.git
 git clone git@github.com:maxmcd/sorting.git
 git clone git@github.com:maxmcd/data-structures-and-algorithms.git
 git clone git@github.com:maxmcd/deno-docker.git
 git clone git@github.com:maxmcd/tfi-supercore.git
 git clone git@github.com:maxmcd/c4.git
-git clone git@github.com:maxmcd/shopthat-code-challenge.git
 git clone git@github.com:maxmcd/fan.git
 git clone git@github.com:maxmcd/heybutts.com.git
 git clone git@github.com:maxmcd/tartan.git
