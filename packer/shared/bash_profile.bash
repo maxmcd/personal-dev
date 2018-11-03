@@ -31,6 +31,9 @@ WHITE=$(tput setaf 15)
 NPROC=$(nproc)
 PS1="\[${WEIRD_BLUE}\]\u $NPROC 👻 :\w\[${POWDER_BLUE}\]\$(git-radar --bash --fetch)\[${WEIRD_BLUE}\] \n$ \[${WHITE}\]"
 
+export EDITOR=vim
+
+
 export HISTFILESIZE=72000
 export HISTSIZE=$HISTFILESIZE
 export HISTCONTROL=ignoreboth:erasedups
