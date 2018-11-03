@@ -64,6 +64,10 @@ wget https://releases.hashicorp.com/nomad/0.8.6/nomad_0.8.6_linux_amd64.zip
 unzip nomad_0.8.6_linux_amd64.zip
 sudo mv nomad /usr/local/bin
 
+wget https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip
+unzip terraform_0.11.10_linux_amd64.zip
+sudo mv terraform /usr/local/bin
+
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
