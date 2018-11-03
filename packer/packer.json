@@ -24,17 +24,17 @@
   },
   {
     "type": "file",
-    "source": "/Users/maxm/.ssh",
+    "source": "/home/maxm/.ssh",
     "destination": "/home/maxm/"
   },
   {
     "type": "file",
-    "source": "/Users/maxm/.aws",
+    "source": "/home/maxm/.aws",
     "destination": "/home/maxm/"
   },
   {
     "type": "file",
-    "source": "/Users/maxm/.bash_history",
+    "source": "/home/maxm/.bash_history",
     "destination": "/home/maxm/"
   },
   {

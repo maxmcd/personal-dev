@@ -35,6 +35,9 @@ sudo apt-get install -y \
 
 cp /ops/shared/bash_profile.bash ~/.bash_profile
 
+git config --global user.email "max.t.mcdonnell@gmail.com"
+git config --global user.name "maxmcd"
+
 # /home/maxm
 cd ~/
 
@@ -51,6 +54,14 @@ python3 install.py
 git clone https://github.com/flazz/vim-colorschemes
 mv vim-colorschemes/colors/ .vim
 rm -rf vim-colorschemes
+
+wget https://releases.hashicorp.com/packer/1.3.2/packer_1.3.2_linux_amd64.zip
+unzip packer_1.3.2_linux_amd64.zip 
+sudo mv packer /usr/local/bin
+
+wget https://releases.hashicorp.com/nomad/0.8.6/nomad_0.8.6_linux_amd64.zip
+unzip nomad_0.8.6_linux_amd64.zip
+sudo mv nomad /usr/local/bin
 
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
