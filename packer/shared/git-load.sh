@@ -1,4 +1,4 @@
-cd /home/maxm/go//src/github.com/
+cd /home/maxm/go//src/github.com/voltusdev/
 git clone git@github.com:voltusdev/ampere.git
 git clone git@github.com:voltusdev/pdfstatement.git
 git clone git@github.com:voltusdev/automate-peak-saver.git
