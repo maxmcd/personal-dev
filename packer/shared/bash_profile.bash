@@ -33,7 +33,6 @@ PS1="\[${WEIRD_BLUE}\]\u $NPROC 👻 :\w\[${POWDER_BLUE}\]\$(git-radar --bash --
 
 export EDITOR=vim
 
-
 export HISTFILESIZE=72000
 export HISTSIZE=$HISTFILESIZE
 export HISTCONTROL=ignoreboth:erasedups
@@ -52,9 +51,9 @@ alias ping='prettyping --nolegend'
 alias f='cd $(find $GITHUB -maxdepth 2 -type d | fzf || echo ".")'
 alias fo='cd $(find $GITHUB -maxdepth 2 -type d | fzf) && hub browse && cd -'
 
-alias gpo="git push origin \$(__git_ps1) --tags"
-alias ggo="git push github \$(__git_ps1) --tags"
-alias glo="git pull origin \$(__git_ps1)"
+alias gpo="git push origin \$(__git_ps1 '%s') --tags"
+alias ggo="git push github \$(__git_ps1 '%s') --tags"
+alias glo="git pull origin \$(__git_ps1 '%s')"
 alias gs="git status"
 alias gst="git stash"
 alias gsta="git stash apply"
