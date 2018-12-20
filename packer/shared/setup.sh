@@ -85,6 +85,11 @@ git clone https://github.com/flazz/vim-colorschemes
 mv vim-colorschemes/colors/ .vim
 rm -rf vim-colorschemes
 
+git clone https://github.com/gpakosz/.tmux.git
+ln -s -f .tmux/.tmux.conf
+cp .tmux/.tmux.conf.local .
+
+
 wget https://releases.hashicorp.com/packer/1.3.2/packer_1.3.2_linux_amd64.zip
 unzip packer_1.3.2_linux_amd64.zip 
 sudo mv packer /usr/local/bin
@@ -93,12 +98,19 @@ wget https://releases.hashicorp.com/nomad/0.8.6/nomad_0.8.6_linux_amd64.zip
 unzip nomad_0.8.6_linux_amd64.zip
 sudo mv nomad /usr/local/bin
 
+wget https://releases.hashicorp.com/terraform/0.11.10/terraform_0.11.10_linux_amd64.zip
+unzip terraform_0.11.10_linux_amd64.zip
+sudo mv terraform /usr/local/bin
+
+rm *.zip
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
 curl -fsSL get.docker.com -o get-docker.sh
 sh get-docker.sh
+sudo gpasswd -a $USER docker
+rm ./get-docker.sh
 
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 
