@@ -1,4 +1,4 @@
-cd /home/maxm/go//src/github.com/
+cd /home/maxm/go//src/github.com/voltusdev/
 git clone git@github.com:voltusdev/ampere.git
 git clone git@github.com:voltusdev/pdfstatement.git
 git clone git@github.com:voltusdev/automate-peak-saver.git
@@ -78,14 +78,13 @@ git clone git@github.com:maxmcd/ast-types.git
 git clone git@github.com:maxmcd/maxmcd.com.git
 git clone git@github.com:maxmcd/worm_scraper.git
 git clone git@github.com:maxmcd/zxing_cpp.rb.git
+git clone git@github.com:maxmcd/webtty.git
 git clone git@github.com:maxmcd/webrtc-builds.git
 git clone git@github.com:maxmcd/quipcity-api.git
-git clone git@github.com:maxmcd/shopthat-calculator.git
 git clone git@github.com:maxmcd/resume.git
 git clone git@github.com:maxmcd/fresh.git
 git clone git@github.com:maxmcd/fusl.git
 git clone git@github.com:maxmcd/commentformatter.git
-git clone git@github.com:maxmcd/shopthat/docs/wiki.git
 git clone git@github.com:maxmcd/shopthat.git
 git clone git@github.com:maxmcd/bristle.git
 git clone git@github.com:maxmcd/plum.git
@@ -111,7 +110,6 @@ git clone git@github.com:maxmcd/v8worker2.git
 git clone git@github.com:maxmcd/blackbird.git
 git clone git@github.com:maxmcd/react-native-wowza-gocoder.git
 git clone git@github.com:maxmcd/react-native-onesignal.git
-git clone git@github.com:maxmcd/sorting.git
 git clone git@github.com:maxmcd/data-structures-and-algorithms.git
 git clone git@github.com:maxmcd/deno-docker.git
 git clone git@github.com:maxmcd/tfi-supercore.git

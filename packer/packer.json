@@ -1,12 +1,16 @@
 {
   "builders": [
     {
-      "type": "googlecompute",
-      "machine_type": "n1-highcpu-4",
-      "project_id": "media-9x16",
-      "source_image_family": "ubuntu-1804-lts",
+      "type": "amazon-ebs",
+      "instance_type": "t2.medium",
+      "profile": "max",
       "ssh_username": "maxm",
-      "zone": "us-east4-a"
+      "region": "us-east-1",
+      "source_ami": "ami-064bae46eb3f804f9",
+      "vpc_id": "vpc-14b9ca71",
+      "subnet_id": "subnet-9a35ebb1",
+      "ami_name": "personal-dev {{timestamp}}",
+      "user_data_file": "./cloud-config.yml"
     }
   ],
   "provisioners":  [
@@ -24,17 +28,22 @@
   },
   {
     "type": "file",
-    "source": "/home/maxm/.ssh",
+    "source": "/Users/maxm/.ssh",
     "destination": "/home/maxm/"
   },
   {
     "type": "file",
-    "source": "/home/maxm/.aws",
+    "source": "/Users/maxm/.oauth2_proxy.cfg",
     "destination": "/home/maxm/"
   },
   {
     "type": "file",
-    "source": "/home/maxm/.bash_history",
+    "source": "/Users/maxm/.aws",
+    "destination": "/home/maxm/"
+  },
+  {
+    "type": "file",
+    "source": "/Users/maxm/.bash_history",
     "destination": "/home/maxm/"
   },
   {

@@ -1,0 +1,12 @@
+[Unit]
+Description=oauth2_proxy
+After=network-online.target
+
+[Service]
+ExecStart=/home/maxm/go/bin/oauth2_proxy -config=/home/maxm/.oauth2_proxy.cfg
+Restart=always
+User=maxm
+Group=maxm
+
+[Install]
+WantedBy=multi-user.target

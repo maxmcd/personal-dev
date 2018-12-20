@@ -1,8 +1,10 @@
 #!/bin/bash
 
-ls -lah /home/maxm/.ssh
-
 set -e
+
+echo $HOME
+
+ls -lah /home/maxm/.ssh
 
 # Disable interactive apt prompts
 export DEBIAN_FRONTEND=noninteractive
@@ -13,27 +15,35 @@ cd /ops
 echo "Hashimoto says sleep!"
 sleep 10 #https://github.com/hashicorp/packer/issues/2143#issuecomment-106956045
 
-sudo apt-get install -y software-properties-common
 sudo apt-get update
+sudo apt-get install -y software-properties-common
 sudo apt-get install -y \
-  unzip \
-  tree \
-  redis-tools \
-  jq \
-  gnupg2 \
-  curl \
-  tmux \
-  git \
-  build-essential \
-  wget \
   aria2 \
+  build-essential \
   cmake \
+  curl \
+  git \
+  gnupg2 \
+  httpie \
+  jq \
   python \
   python3-dev \
+  python3-pip \
+  redis-tools \
   ruby \
-  tree
+  tmux \
+  tree \
+  unzip \
+  nginx \
+  wget \
+  vim \
+  `# line ending`
 
 cp /ops/shared/bash_profile.bash ~/.bash_profile
+
+sudo cp /ops/shared/oauth.conf /etc/nginx/conf.d
+sudo nginx -t
+sudo service nginx start
 
 git config --global user.email "max.t.mcdonnell@gmail.com"
 git config --global user.name "maxmcd"
@@ -41,12 +51,31 @@ git config --global user.name "maxmcd"
 # /home/maxm
 cd ~/
 
+sudo add-apt-repository ppa:gophers/archive
+sudo apt-get update
+sudo apt-get install -y golang-1.10-go
+mkdir ~/go
+mkdir -p ~/go/src/github.com/maxmcd
+mkdir -p ~/go/src/github.com/voltusdev
+mkdir ~/go/bin
+
+git clone https://github.com/gpakosz/.tmux.git
+ln -s -f .tmux/.tmux.conf
+cp .tmux/.tmux.conf.local .
+
+GOPATH=/home/maxm/go /usr/lib/go-1.10/bin/go get github.com/bitly/oauth2_proxy
+sudo cp /ops/shared/oauth2_proxy.service /etc/systemd/system/oauth2_proxy.service
+sudo systemctl start oauth2_proxy.service
+GOPATH=/home/maxm/go /usr/lib/go-1.10/bin/go get github.com/yudai/gotty
+sudo cp /ops/shared/gotty.service /etc/systemd/system/gotty.service
+sudo systemctl start gotty.service
+
 # Install vim-sublime
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-curl https://raw.githubusercontent.com/grigio/vim-sublime/master/vimrc > $HOME/.vimrc
+mv /ops/shared/vimrc $HOME/.vimrc
 
 # https://github.com/VundleVim/Vundle.vim/issues/511#issuecomment-134251209
-echo | echo | vim +PluginInstall +qall &>/dev/null
+echo | echo | vim +PluginInstall +qall 
 
 cd ~/.vim/bundle/YouCompleteMe
 python3 install.py
@@ -71,10 +100,6 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 curl -fsSL get.docker.com -o get-docker.sh
 sh get-docker.sh
 
-sudo add-apt-repository ppa:gophers/archive
-sudo apt-get update
-sudo apt-get install -y golang-1.10-go
-
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # allow me to ssh into myself
@@ -82,11 +107,6 @@ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 wget -O .git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash 
 wget -O .git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
-
-mkdir ~/go
-mkdir -p ~/go/src/github.com/maxmcd
-mkdir -p ~/go/src/github.com/voltusdev
-mkdir ~/go/bin
 
 cd ~ && git clone https://github.com/michaeldfallen/git-radar .git-radar
 
