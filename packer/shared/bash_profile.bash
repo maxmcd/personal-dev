@@ -22,6 +22,7 @@ source ~/.git-prompt.sh
 export GOPATH="$HOME/go/"
 export PATH=$PATH:/usr/lib/go-1.10/bin:$HOME/.cargo/bin:$GOPATH/bin
 export PATH=$PATH:$HOME/.git-radar
+export PATH="$HOME/.cargo/bin:$PATH"
 export GITHUB=$GOPATH/src/github.com/
 export MX=$GOPATH/src/github.com/maxmcd/
 
@@ -46,6 +47,7 @@ alias gl='git log --graph --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(whi
 alias gocover='go test  -coverprofile=coverage.out && go tool cover -html=coverage.out && rm coverage.out'
 alias pt=papertrail
 alias cat=bat
+alias sudo='sudo '
 alias ping='prettyping --nolegend'
 
 alias f='cd $(find $GITHUB -maxdepth 2 -type d | fzf || echo ".")'
@@ -85,3 +87,4 @@ alias d="du -chd 1 | sort -h"
 wgett () {
     aria2c -x 10 -s 10 $1
 }
+

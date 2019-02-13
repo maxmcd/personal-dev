@@ -65,9 +65,11 @@ cp .tmux/.tmux.conf.local .
 
 GOPATH=/home/maxm/go /usr/lib/go-1.10/bin/go get github.com/bitly/oauth2_proxy
 sudo cp /ops/shared/oauth2_proxy.service /etc/systemd/system/oauth2_proxy.service
+sudo systemctl enable oauth2_proxy.service
 sudo systemctl start oauth2_proxy.service
 GOPATH=/home/maxm/go /usr/lib/go-1.10/bin/go get github.com/yudai/gotty
 sudo cp /ops/shared/gotty.service /etc/systemd/system/gotty.service
+sudo systemctl enable gotty.service
 sudo systemctl start gotty.service
 
 # Install vim-sublime
@@ -75,7 +77,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 mv /ops/shared/vimrc $HOME/.vimrc
 
 # https://github.com/VundleVim/Vundle.vim/issues/511#issuecomment-134251209
-echo | echo | vim +PluginInstall +qall 
+echo | echo | vim +PluginInstall +qall
 
 cd ~/.vim/bundle/YouCompleteMe
 python3 install.py
@@ -91,7 +93,7 @@ cp .tmux/.tmux.conf.local .
 
 
 wget https://releases.hashicorp.com/packer/1.3.2/packer_1.3.2_linux_amd64.zip
-unzip packer_1.3.2_linux_amd64.zip 
+unzip packer_1.3.2_linux_amd64.zip
 sudo mv packer /usr/local/bin
 
 wget https://releases.hashicorp.com/nomad/0.8.6/nomad_0.8.6_linux_amd64.zip
@@ -110,14 +112,16 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 curl -fsSL get.docker.com -o get-docker.sh
 sh get-docker.sh
 sudo gpasswd -a $USER docker
+sudo usermod -aG docker $USER
 rm ./get-docker.sh
+
 
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # allow me to ssh into myself
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
-wget -O .git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash 
+wget -O .git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 wget -O .git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 
 cd ~ && git clone https://github.com/michaeldfallen/git-radar .git-radar
