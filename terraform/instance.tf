@@ -2,7 +2,7 @@
 
 resource "aws_instance" "default" {
   ami           = "ami-04d4a23107c047ed3"
-  instance_type = "t2.medium"
+  instance_type = "c5.large"
   subnet_id = "subnet-9a35ebb1"
   vpc_security_group_ids = ["${aws_security_group.instance.id}"]
 

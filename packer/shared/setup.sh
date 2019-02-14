@@ -21,6 +21,7 @@ sudo apt-get install -y \
   aria2 \
   build-essential \
   cmake \
+  clang \
   curl \
   git \
   gnupg2 \
@@ -34,6 +35,7 @@ sudo apt-get install -y \
   tmux \
   tree \
   unzip \
+  lua5.3 \
   nginx \
   wget \
   vim \
@@ -109,6 +111,9 @@ rm *.zip
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
+wget https://raw.githubusercontent.com/skywind3000/z.lua/master/z.lua
+cp ./z.lua ~/.z.lua
+
 curl -fsSL get.docker.com -o get-docker.sh
 sh get-docker.sh
 sudo gpasswd -a $USER docker
@@ -117,6 +122,8 @@ rm ./get-docker.sh
 
 
 curl https://sh.rustup.rs -sSf | sh -s -- -y
+rustup component add rustfmt-preview
+
 
 # allow me to ssh into myself
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys

@@ -2,7 +2,7 @@
   "builders": [
     {
       "type": "amazon-ebs",
-      "instance_type": "t2.medium",
+      "instance_type": "c5.large",
       "profile": "max",
       "ssh_username": "maxm",
       "region": "us-east-1",
@@ -28,22 +28,22 @@
   },
   {
     "type": "file",
-    "source": "/Users/maxm/.ssh",
+    "source": "/home/maxm/.ssh",
     "destination": "/home/maxm/"
   },
   {
     "type": "file",
-    "source": "/Users/maxm/.oauth2_proxy.cfg",
+    "source": "/home/maxm/.oauth2_proxy.cfg",
     "destination": "/home/maxm/"
   },
   {
     "type": "file",
-    "source": "/Users/maxm/.aws",
+    "source": "/home/maxm/.aws",
     "destination": "/home/maxm/"
   },
   {
     "type": "file",
-    "source": "/Users/maxm/.bash_history",
+    "source": "/home/maxm/.bash_history",
     "destination": "/home/maxm/"
   },
   {
